@@ -132,11 +132,13 @@
     dataBase.ref().on("child_added", function (snapshot) {
             // storing the snapshot.val
 
-            var train = snapshot.val();
-            var trainName = train.trainName;
+            var trainSnap = snapshot.val();
+            var trainName = trainSnap.trainName;
+            var destination = trainSnap.destination;
+
             console.log("trainsnap: ", trainName)
 
-            console.log("snap: ", train);
+            console.log("snap: ", trainSnap);
 
             // fill your table on the screen // calculate the next arrivel and the minutes away
 
