@@ -5,19 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Train Scheduler</title>
-    <!-- jQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
+    <!--Linking CSS-->
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+    <!--Linking CSS Reset-->
+    <link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Firebase Reference -->
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
-
     <!-- Moment.js Reference -->
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <!--Adding Title-->
+    <title>Train Scheduler</title>
 </head>
 
 <body>
@@ -97,39 +101,39 @@
         };
 
 
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
 
-    var dataBase = firebase.database();
+        var dataBase = firebase.database();
 
-    // Initial Values
-    var trainName = "";
-    var destination = "";
-    var firstTrain = "";
-    var frequencyMins = 0;
-    var nextArrival = "";
-    var minsAway = 0;
-
-
-    // Capture Button Click
-    $("#submitButton").on("click", function (event) {
-    event.preventDefault();
+        // Initial Values
+        var trainName = "";
+        var destination = "";
+        var firstTrain = "";
+        var frequencyMins = 0;
+        var nextArrival = "";
+        var minsAway = 0;
 
 
-    // Grabbing Values
-    var newTrain={
-    trainName: $("#trainName").val().trim(),
-    destination: $("#destination").val().trim(),
-    frequencyMins: $("#frequencyMins").val().trim(),
-    firstTrain: $("#firstTrain").val().trim()
-    }
+        // Capture Button Click
+        $("#submitButton").on("click", function (event) {
+            event.preventDefault();
 
-    // Code for handling push to firebase
-    dataBase.ref().push(newTrain);
-    console.log("newtrain: ", newTrain);
-    });
 
-    dataBase.ref().on("child_added", function (snapshot) {
+            // Grabbing Values
+            var newTrain = {
+                trainName: $("#trainName").val().trim(),
+                destination: $("#destination").val().trim(),
+                frequencyMins: $("#frequencyMins").val().trim(),
+                firstTrain: $("#firstTrain").val().trim()
+            }
+
+            // Code for handling push to firebase
+            dataBase.ref().push(newTrain);
+            console.log("newtrain: ", newTrain);
+        });
+
+        dataBase.ref().on("child_added", function (snapshot) {
             // storing the snapshot.val
 
             var trainSnap = snapshot.val();
