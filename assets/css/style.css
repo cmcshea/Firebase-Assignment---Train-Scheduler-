@@ -11,7 +11,7 @@
 }
 
 body {
-    background-image: url("https://secure.i.telegraph.co.uk/multimedia/archive/02467/grand-alamy_2467882b.jpg");
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/b/bf/Grand_Central_Board.jpg");
     background-repeat: no-repeat;
     background-size: 100%;
 }
@@ -19,4 +19,9 @@ body {
 .container {
     background: white;
     /* text-align: center; */
+}
+
+#jumbotron {
+    background: rgb(182, 91, 55);
+    text-align: center;   
 }
